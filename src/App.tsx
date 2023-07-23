@@ -9,7 +9,8 @@ import genericSearch from "./utils/genericSearch";
 import { SearchInput } from "./components/SearchInput";
 import { Sorters } from "./components/Sorters";
 import { genericSort } from "./utils/genericSort";
-
+import { WidgetRenderer } from "./components/renderers/WidgetRenderer";
+import { PersonRenderer } from "./components/renderers/PersonRenderer";
 function App() {
   const [query, setQuery] = useState("");
   const [widgetSortProperty, setWidgetSortProperty] = useState<
@@ -20,6 +21,19 @@ function App() {
   >({ property: "firstName" });
   return (
     <>
+      <h2>People:</h2>
+      {people.map((person) => {
+        return (
+          <PersonRenderer
+            key={`${person.firstName}-${person.lastName}-${person.birthday}`}
+            {...person}
+          />
+        );
+      })}
+      <h2>Widgets:</h2>
+      {widgets.map((widget) => {
+        return <WidgetRenderer key={widget.id} {...widget} />;
+      })}
       <SearchInput setSearchQuery={setQuery} />
       <h2>Widgets:</h2>
       <Sorters
