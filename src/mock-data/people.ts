@@ -1,6 +1,6 @@
 import { IPerson } from "../interfaces/IPerson";
 
-const people: Array<IPerson> = [
+export const people: Array<IPerson> = [
   {
     firstName: "Boyle",
     lastName: "Sanford",
@@ -162,5 +162,3 @@ const people: Array<IPerson> = [
     ),
   },
 ];
-
-export default people;

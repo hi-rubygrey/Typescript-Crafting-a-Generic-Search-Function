@@ -1,6 +1,6 @@
 import { IWidget } from "../interfaces/IWidget";
 
-const widgets: Array<IWidget> = [
+export const widgets: Array<IWidget> = [
   {
     title: "I am title 1",
     description: "cool description 1",
@@ -121,5 +121,3 @@ const widgets: Array<IWidget> = [
     isSpecialCard: false,
   },
 ];
-
-export default widgets;
