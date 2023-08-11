@@ -18,9 +18,18 @@ export default function App() {
   const [personSortProperty, setPersonSortProperty] = useState<
     ISortProperty<IPerson>
   >({ property: "firstName", isDescending: false });
-
+  const [showPeople, setShowPeople] = useState<boolean>(false);
+  const buttonText = showPeople ? "Show widgets" : "Show people";
   return (
     <>
+      <button
+        className="btn btn-primary"
+        onClick={() => setShowPeople(!showPeople)}
+      >
+        {buttonText}
+      </button>
+      {!showPeople && 
+      <>
       <h2>Widgets:</h2>
       <Sorters
         setSortProperty={(property) => setWidgetSortProperty(property)}
@@ -38,6 +47,9 @@ export default function App() {
         .map((widget) => {
           return <WidgetRenderer {...widget} />;
         })}
+      </>}
+      {showPeople && 
+      <>
       <h2>People:</h2>
       <Sorters
         setSortProperty={(property) => setPersonSortProperty(property)}
@@ -54,7 +66,7 @@ export default function App() {
         )
         .map((person) => {
           return <PersonRenderer {...person} />;
-        })}
+        })}</>}
     </>
   );
 }
